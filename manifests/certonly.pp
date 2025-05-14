@@ -203,7 +203,7 @@ define letsencrypt::certonly (
     if $suppress_cron_output {
       $croncommand = "${maincommand} > /dev/null 2>&1"
     } elsif $cron_output_mailto {
-      $croncommand = "${maincommand} 2>&1 |mail -s 'Letsencrypt cron job' '${cron_output_mailto}'"
+      $croncommand = "${maincommand} 2>&1 |mail -E -s 'Letsencrypt cron job' '${cron_output_mailto}'"
     } else {
       $croncommand = $maincommand
     }
